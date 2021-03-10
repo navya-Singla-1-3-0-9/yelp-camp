@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark navbar-expand-xxl bg-dark sticky-top" style="background-size:auto; font-size: 20px;">
+        <a class="navbar-brand" href="#" style="font-weight: 600; padding-right: 50px;">Yelpcamp</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#content">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="content">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                <a class="nav-link" href="/campgrounds/new">New Campground</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <% if(!currUser) {%>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Register</a>
+                <% } else {%>
+                <a class="nav-link" href="/logout">Logout</a>
+                <% } %>
+            </div>
+        </div>
+</nav>

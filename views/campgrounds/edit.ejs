@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel= "stylesheet" href="/styles.css">
+
+  </head>
+  <body style="color: white;">
+    <%-include("nav")%>
+    <main class="container-fluid mt-5">
+      <div class="row">
+        <h1 class="text-center">EDIT CAMPGROUND</h1>
+        <div class="col-md-6 offset-md-3">
+        <form action="/campgrounds/<%=cg.id%>" method="post" enctype="multipart/form-data"  style="color: white;">
+      <div class="mb-3">
+        <label class="form-label" for="name">Title</label>
+        <input type="text" name="title" placeholder="campground name" class="form-control" id="name" value="<%=cg.title%>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="loc">Location</label>
+        <input type="text" name="location" placeholder="campground Location" class="form-control" id="loc" value="<%=cg.location%>">
+      </div>
+     <div class="mb-3">
+        <label class="form-label" for="image">Images:</label>
+        <input type="file" name="image" class="form-control" id="image" multiple>
+      </div>
+       <div class="mb-3">
+                <% cg.images.forEach(function(img, i) {  %>
+                <img src="<%=img.url%>" class="img-thumbnail" style="width: 100px;">
+                
+                  <span>
+                  <input type="checkbox" id="image-<%=i%>" name ="deleteimages[]" value="<%=img.filename%>">
+                  <label for="image-<%=i%>">Delete</label></span>
+                  <br>
+                
+                
+                <% })%>
+            </div>
+           
+      <div class="mb-3">
+        <label class="form-label" for="desc">Description</label>
+        <textarea type="text" name="description" placeholder="campground description" class="form-control" id="desc"><%=cg.description%></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Price</label>
+        <div class="input-group">
+        <span class="input-group-text" id= "pr">$</span>
+        <input type="text" name="price" placeholder="Price" class="form-control" id="price" aria-describedby="pr" value="<%=cg.price%>">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-info mb-3">Update Campground</button>
+    </form>
+    <a href="/campgrounds" class="mb-3">Back to Campgrounds</a>
+      </div>
+      </div>
+  	
+  </main>
+   <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

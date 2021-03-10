@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campgrounds!</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel= "stylesheet" href="/app.css">
+    
+  
+
+  </head>
+  <body style="background-color: #fff2e6">
+  	<%-include("nav")%>
+   
+    <div id="cluster-map"></div>
+    
+  	<main class="container mt-5">
+      <%-include('../partials/flash')%>
+    
+  	<h1 class="text-center mb-5">CAMPGROUNDS</h1>
+  	
+  		<%for(let c of campgrounds){%>
+  		 <div class="card mb-5" style="box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);">
+  		 	<div class="row">
+          
+  		 		<div class="col-md-4">
+  		 			<img class="img-fluid" src="<%=c.images[0].url%>" style="height: 300px;">
+  		 		</div>
+  		 		<div class="col-md-8">
+  		 			<div class="card-body">
+  		 			<h5 class="card-title" style="text-transform: uppercase;" >
+  		 				<%=c.title%>
+  		 			</h5>
+  		 			<p class="card-text"><%=c.description%></p>
+  		 			<p class="card-text"><small class="text-muted"><%=c.location%></small></p>
+  		 			<a href="/campgrounds/<%=c.id%>" class="btn btn-dark">View <%=c.title%></a>
+  		 		</div>
+  		 	</div>
+  		 </div>
+      </div>
+
+  		<%}%>
+</main>
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+
+<script src="/clusterMap.js"></script>
+  </body>
+</html>

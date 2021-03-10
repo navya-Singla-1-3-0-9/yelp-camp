@@ -1,0 +1,19 @@
+@media (max-width: 1000px){
+	.card-text{
+		font-size: 25px;
+	}
+	.btn{
+		font-size: 25px;
+	}
+	.navbar-brand{
+		font-size: 30px;
+	}
+	.nav-link{
+		font-size: 30px;
+	}
+	
+}
+.ncg{
+	padding-right: 20%;
+	padding-left: 20%; 
+}

@@ -1,0 +1,29 @@
+const Review= require('../models/review.js');
+const Campground= require('../models/campground.js');
+
+module.exports.createReview= async (req,res)=>{
+	/*const cg = await Campground.findById(req.params.id);
+	const review= new Review(req.body);
+	review.author= req.user._id;
+	cg.reviews.push(review);
+	await review.save();
+	await cg.save();
+	req.flash('success','Review added')
+	res.redirect(`/campgrounds/${cg._id}`)*/
+	const campground = await Campground.findById(req.params.id);
+    const review = new Review(req.body);
+    review.author = req.user._id;
+    campground.reviews.push(review);
+    await review.save();
+    await campground.save();
+    req.flash('success', 'Created new review!');
+    res.redirect(`/campgrounds/${campground._id}`);
+}
+module.exports.updateRev= async (req,res)=>{
+
+	const { id, revid } = req.params;
+    await Campground.findByIdAndUpdate(id, { $pull: { reviews: revid } });
+    await Review.findByIdAndDelete(revid);
+    req.flash('success', 'Successfully deleted review')
+    res.redirect(`/campgrounds/${id}`);
+}

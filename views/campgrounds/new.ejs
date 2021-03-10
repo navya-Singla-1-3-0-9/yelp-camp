@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YelpCamp</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel= "stylesheet" href="/styles.css">
+
+  </head>
+  <body>
+  	<%-include("nav")%>
+  	<main class="container  mt-5">
+  		<div class="row">
+  			<h1 class="text-center" style="color:white">NEW CAMPGROUND</h1>
+  			<div class="col-md-6 offset-md-3">
+  			<form action="/campgrounds" method="post" enctype="multipart/form-data" style="color: white;">
+  		<div class="mb-3">
+  			<label class="form-label" for="name">Title</label>
+  			<input type="text" name="title" placeholder="campground name" class="form-control" id="name">
+  		</div>
+
+  		<div class="mb-3">
+  			<label class="form-label" for="loc">Location</label>
+  			<input type="text" name="location" placeholder="campground Location" class="form-control" id="loc">
+  		</div>
+  		<div class="mb-3">
+  <label for="formFile" class="form-label custom-file">Upload Images </label>
+  <input class="form-control custom-file-label" name="image" type="file" id="formFile" multiple>
+</div>
+  		<div class="mb-3">
+  			<label class="form-label" for="desc">Description</label>
+  			<textarea type="text" name="description" placeholder="campground description" class="form-control" id="desc"></textarea>
+  		</div>
+  		<div class="mb-3">
+  			<label class="form-label" for="price">Price</label>
+  			<div class="input-group">
+  			<span class="input-group-text" id= "pr">$</span>
+  			<input type="text" name="price" placeholder="Price" class="form-control" id="price" aria-describedby="pr">
+  			</div>
+  		</div>
+  		<button type="submit" class="btn btn-success btn-block mb-3">Add Campground</button>
+  	</form>
+  	<a href="/campgrounds" class="mb-3">All Campgrounds</a>
+  		</div>
+  		</div>
+  	
+  </main>
+   
+ 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+  </body>
+</html>
