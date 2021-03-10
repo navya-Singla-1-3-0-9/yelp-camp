@@ -1,8 +1,7 @@
 if(process.env.NODE_ENV!=="production"){
 	require('dotenv').config();
 }
-//D5X723rdXGhsGNcd
-//mongodb+srv://navya1309:<password>@cluster0.r4yme.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
 
 const express= require('express');
 const session = require('express-session')
